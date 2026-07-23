@@ -58,8 +58,8 @@ async function app(req: Request): Promise<Response> {
       </div>
       <div>
         <h2>You can use this form: </h2>
-        <p>Enter your username and click get trophies</p>
-        <form action="https://github-profile-trophy.vercel.app/" method="get">
+        <p>Enter your username and click "Get Trophies"</p>
+        <form action="${base}" method="get">
           <label for="username">GitHub Username</label>
           <input type="text" name="username" id="username" placeholder="Ex. gabriel-logan" required>
           <label for="theme">Theme (Optional)</label>
@@ -69,11 +69,10 @@ async function app(req: Request): Promise<Response> {
             <a href="https://github.com/ryo-ma/github-profile-trophy?tab=readme-ov-file#apply-theme" target="_blank">here</a>
           </text>
           <br>
-          <button type="submit">Get Trophy&apos;s</button>
+          <button type="submit">Get Trophies</button>
         </form>
       </div>
       <script>
-        const base = "https://github-profile-trophy.vercel.app/";
         const button = document.querySelector("button");
         const input = document.querySelector("input");
         const temporarySpan = document.querySelector("#temporary-span");
@@ -93,7 +92,7 @@ async function app(req: Request): Promise<Response> {
       {
         status: error.status,
         headers: new Headers({
-          "Content-Type": "text",
+          "Content-Type": "text/html",
           "Cache-Control": cacheControlHeader,
         }),
       },
@@ -139,7 +138,7 @@ async function app(req: Request): Promise<Response> {
         {
           status: userResponseInfo.code,
           headers: new Headers({
-            "Content-Type": "text",
+            "Content-Type": "text/html",
             "Cache-Control": cacheControlHeader,
           }),
         },
